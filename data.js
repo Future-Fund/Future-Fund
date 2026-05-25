@@ -5,7 +5,7 @@ const MONTHS = ['January','February','March','April','May','June','July','August
 const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 // *** BAKED-IN Sheets URL — works for ALL visitors regardless of localStorage ***
-const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzIuAxfacXPAGzBhJkk1Gln3hUV3ZMevyUXY42rXkdtcq1G-MqydNNi0hBzjlL6Qc_raw/exec';
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxp2HZkG4trQHQpb3nLgj9i-5kwJTlZzU1udMD6OXuXT5HCXuvlUW_oA9gs1PtKDZzmbw/exec';
 
 
 function getEffectiveSheetsUrl() {
