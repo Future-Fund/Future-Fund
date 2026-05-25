@@ -59,7 +59,7 @@
  */
 
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
-const SPREADSHEET_ID= '1tOst13necIgh-gehnl1Qz8FXc5rkJuRdca-kMxYGRls' // ← REPLACE THIS (Step 1c)
+const SPREADSHEET_ID= '1m-nLSKQ6ONG_IrkqPetANB3iF8697sGpWCnwWtBzWEQ' // ← REPLACE THIS (Step 1c)
 const SHEET_MEMBERS  = 'Members';
 const SHEET_PAYMENTS = 'Payments';
 const SHEET_EXPENSES = 'Expenses';
