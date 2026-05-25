@@ -24,7 +24,7 @@ let state = {
     currency: '৳',
     fundName: 'Future Fund Savings',
     foundedDate: '2026-05',
-    noticeDaysBeforeExpiry: 30
+    noticeDaysBeforeExpiry: 20
   },
   adminPassword: 'admin123',
   isAdmin: false,
