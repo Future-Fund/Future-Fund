@@ -960,7 +960,7 @@ function updateSyncStatus(msg, syncing) {
 async function syncNow() {
   const url = getEffectiveSheetsUrl();
   if(!url) {
-    updateSyncStatus('https://script.google.com/macros/s/AKfycby2nbZhNEDRXAI_bxqI2wsEEncqa0bcw65Tq3yveumL-MCkeuKoAOF19a2u8FOMOivd/exec');
+    updateSyncStatus('https://script.google.com/macros/s/AKfycbxp2HZkG4trQHQpb3nLgj9i-5kwJTlZzU1udMD6OXuXT5HCXuvlUW_oA9gs1PtKDZzmbw/exec');
     if(state.currentPage==='settings') document.getElementById('sync-msg').textContent = '⚠️ Set your Google Sheets URL first';
     return;
   }
