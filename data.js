@@ -835,11 +835,11 @@ function deleteMember(id) {
 function renderSettings() {
   document.getElementById('sheets-url').value = state.settings.sheetsUrl||'';
   document.getElementById('sync-mode').value = state.settings.syncMode||'manual';
-  document.getElementById('fund-name').value = state.settings.fundName||'Future Fund Savings';
-  document.getElementById('monthly-rate').value = state.settings.monthlyRate||500;
+  document.getElementById('fund-name').value = state.settings.fundName||'Future Fund';
+  document.getElementById('monthly-rate').value = state.settings.monthlyRate||2000;
   document.getElementById('currency-sym').value = state.settings.currency||'৳';
-  document.getElementById('founded-date').value = state.settings.foundedDate||'2024-01';
-  document.getElementById('notice-expiry-days').value = state.settings.noticeDaysBeforeExpiry||30;
+  document.getElementById('founded-date').value = state.settings.foundedDate||'2026-05';
+  document.getElementById('notice-expiry-days').value = state.settings.noticeDaysBeforeExpiry||20;
   // All inputs/buttons in settings are admin-only
   const settingsInputs = document.querySelectorAll('#page-settings input, #page-settings select, #page-settings textarea, #page-settings button');
   settingsInputs.forEach(el => { el.disabled = !state.isAdmin; });
