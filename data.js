@@ -24,7 +24,7 @@ let state = {
     currency: '৳',
     fundName: 'Future Fund Savings',
     foundedDate: '2026-05',
-    noticeDaysBeforeExpiry: 20
+    noticeDaysBeforeExpiry: 15
   },
   adminPassword: 'admin123',
   isAdmin: false,
@@ -839,7 +839,7 @@ function renderSettings() {
   document.getElementById('monthly-rate').value = state.settings.monthlyRate||2000;
   document.getElementById('currency-sym').value = state.settings.currency||'৳';
   document.getElementById('founded-date').value = state.settings.foundedDate||'2026-05';
-  document.getElementById('notice-expiry-days').value = state.settings.noticeDaysBeforeExpiry||20;
+  document.getElementById('notice-expiry-days').value = state.settings.noticeDaysBeforeExpiry||15;
   // All inputs/buttons in settings are admin-only
   const settingsInputs = document.querySelectorAll('#page-settings input, #page-settings select, #page-settings textarea, #page-settings button');
   settingsInputs.forEach(el => { el.disabled = !state.isAdmin; });
@@ -854,10 +854,10 @@ function saveSettings() {
 
 function saveFundSettings() {
   state.settings.fundName = document.getElementById('fund-name').value;
-  state.settings.monthlyRate = parseFloat(document.getElementById('monthly-rate').value)||500;
+  state.settings.monthlyRate = parseFloat(document.getElementById('monthly-rate').value)||2000;
   state.settings.currency = document.getElementById('currency-sym').value||'৳';
   state.settings.foundedDate = document.getElementById('founded-date').value;
-  state.settings.noticeDaysBeforeExpiry = parseInt(document.getElementById('notice-expiry-days').value)||30;
+  state.settings.noticeDaysBeforeExpiry = parseInt(document.getElementById('notice-expiry-days').value)||15;
   saveState();
   alert('Fund settings saved!');
 }
