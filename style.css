@@ -148,6 +148,13 @@
     .form-row{grid-template-columns:1fr}
     .page{padding:16px}
   }
+/* Mobile view */
+@media (max-width: 768px){
+    #view-only-banner{
+        left:10px;
+        right:10px;
+    }
+}
   @media(max-width:480px){
     .grid-4{grid-template-columns:1fr}
     .grid-3{grid-template-columns:1fr}
