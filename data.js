@@ -4,7 +4,7 @@
 // Paste your Firebase Config keys below to bake them into the deployment.
 // If left empty, the site will prompt you to enter them through the UI on first load.
 const DEFAULT_FIREBASE_CONFIG = {
-  apiKey: "AIzaSyCI3eYl7RqvSWbJHH4pkNyqlufBcTxMs5Y",
+  apiKey: "",
   authDomain: "future-fund-savings.firebaseapp.com",
   projectId: "future-fund-savings",
   storageBucket: "future-fund-savings.firebasestorage.app",
