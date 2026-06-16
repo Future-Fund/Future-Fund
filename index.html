@@ -18,31 +18,88 @@
 <div class="login-logo-motto">"Savings For The Future"</div>
 </div>
 <div class="auth-box">
-<div class="login-tabs">
+<div class="login-tabs" id="login-tabs-container">
 <button class="login-tab active" id="tab-member" onclick="switchLoginTab('member')">👤 Member Login</button>
 <button class="login-tab" id="tab-admin" onclick="switchLoginTab('admin')">🔑 Admin Login</button>
+</div>
+<!-- FIREBASE CONFIG SETUP PANEL -->
+<div class="login-panel" id="panel-firebase-setup">
+<div style="font-size:14px;color:var(--text);font-weight:700;margin-bottom:12px;text-align:center">⚠️ Firebase Configuration Required</div>
+<p style="font-size:11px;color:var(--muted);margin-bottom:16px;text-align:center">Please enter your Firebase web app configuration to connect the website.</p>
+<div class="form-group">
+<label>API Key</label>
+<input id="fb-api-key" placeholder="AIzaSy..." type="text"/>
+</div>
+<div class="form-group">
+<label>Auth Domain</label>
+<input id="fb-auth-domain" placeholder="your-app.firebaseapp.com" type="text"/>
+</div>
+<div class="form-group">
+<label>Project ID</label>
+<input id="fb-project-id" placeholder="your-app-id" type="text"/>
+</div>
+<div class="form-group">
+<label>Storage Bucket</label>
+<input id="fb-storage-bucket" placeholder="your-app.appspot.com" type="text"/>
+</div>
+<div class="form-group">
+<label>Messaging Sender ID</label>
+<input id="fb-messaging-sender-id" placeholder="1234567890" type="text"/>
+</div>
+<div class="form-group">
+<label>App ID</label>
+<input id="fb-app-id" placeholder="1:1234:web:abcd" type="text"/>
+</div>
+<button class="btn btn-gold" onclick="saveFirebaseConfigUI()" style="width:100%;margin-top:4px">Save & Initialize</button>
 </div>
 <!-- MEMBER LOGIN PANEL -->
 <div class="login-panel active" id="panel-member">
 <div class="form-group">
-<label>Select Your Name</label>
-<select id="member-login-select">
-<option value="">— Choose your name —</option>
-</select>
+<label>Email Address</label>
+<input id="member-login-email" placeholder="name@gmail.com" type="email"/>
 </div>
-<div class="error-msg" id="member-login-error" style="display:none">Please select your name.</div>
+<div class="form-group">
+<label>Password</label>
+<input id="member-login-pwd" onkeydown="if(event.key==='Enter')memberLogin()" placeholder="Enter password" type="password"/>
+</div>
+<div class="error-msg" id="member-login-error" style="display:none">Invalid email or password.</div>
 <button class="btn btn-gold" onclick="memberLogin()" style="width:100%;margin-top:4px">View Dashboard</button>
-<p style="text-align:center;font-size:11px;color:var(--muted);margin-top:14px">Members can view data but cannot edit or add records.</p>
+<p style="text-align:center;font-size:12px;color:var(--muted);margin-top:14px">Don't have an account? <a href="#" onclick="switchLoginTab('register')" style="color:var(--accent-purple);font-weight:700;text-decoration:none">Register here</a></p>
 </div>
 <!-- ADMIN LOGIN PANEL -->
 <div class="login-panel" id="panel-admin">
 <div class="form-group">
-<label>Admin Password</label>
-<input id="admin-login-pwd" onkeydown="if(event.key==='Enter')adminLogin()" placeholder="Enter password" type="password"/>
-<div class="error-msg" id="admin-login-error" style="display:none">Incorrect password. Try again.</div>
+<label>Admin Email</label>
+<input id="admin-login-email" placeholder="admin@futurefund.com" type="email"/>
 </div>
+<div class="form-group">
+<label>Password</label>
+<input id="admin-login-pwd" onkeydown="if(event.key==='Enter')adminLogin()" placeholder="Enter password" type="password"/>
+</div>
+<div class="error-msg" id="admin-login-error" style="display:none">Incorrect email or password.</div>
 <button class="btn btn-gold" onclick="adminLogin()" style="width:100%;margin-top:4px">Unlock Admin</button>
-<p style="text-align:center;font-size:11px;color:var(--muted);margin-top:14px">Admin has full access to add, edit, and delete records.</p>
+</div>
+<!-- REGISTER PANEL -->
+<div class="login-panel" id="panel-register">
+<div class="form-group">
+<label>Full Name</label>
+<input id="register-name" placeholder="Enter your full name" type="text"/>
+</div>
+<div class="form-group">
+<label>Gmail Address</label>
+<input id="register-email" placeholder="name@gmail.com" type="email"/>
+</div>
+<div class="form-group">
+<label>Create Password</label>
+<input id="register-pwd" placeholder="Min 6 characters" type="password"/>
+</div>
+<div class="form-group">
+<label>Phone Number (Optional)</label>
+<input id="register-phone" placeholder="Phone number" type="text"/>
+</div>
+<div class="error-msg" id="register-error" style="display:none">Registration failed.</div>
+<button class="btn btn-gold" onclick="registerUser()" style="width:100%;margin-top:4px">Register & Login</button>
+<p style="text-align:center;font-size:12px;color:var(--muted);margin-top:14px">Already have an account? <a href="#" onclick="switchLoginTab('member')" style="color:var(--accent-purple);font-weight:700;text-decoration:none">Login here</a></p>
 </div>
 </div>
 </div>
@@ -395,23 +452,34 @@ Profile: <span id="banner-name"></span>
 <div class="section-title" style="margin-bottom:20px">⚙️ Settings</div>
 <div class="grid-2">
 <div class="card">
-<div class="section-title" style="font-size:16px;margin-bottom:16px">🔗 Google Sheets Integration</div>
+<div class="section-title" style="font-size:16px;margin-bottom:16px">🔥 Firebase Integration</div>
 <div class="form-group">
-<label>Google Sheets Web App URL</label>
-<input id="sheets-url" placeholder="https://script.google.com/macros/s/..." type="text" value=""/>
-<div style="font-size:11px;color:var(--muted);margin-top:6px">Deploy your Apps Script as a web app and paste the URL here.</div>
+<label>API Key</label>
+<input id="settings-fb-api-key" placeholder="AIzaSy..." type="password"/>
 </div>
 <div class="form-group">
-<label>Sync Mode</label>
-<select id="sync-mode">
-<option value="manual">Manual Sync</option>
-<option value="auto">Auto Sync (on every change)</option>
-</select>
+<label>Auth Domain</label>
+<input id="settings-fb-auth-domain" placeholder="your-app.firebaseapp.com" type="text"/>
+</div>
+<div class="form-group">
+<label>Project ID</label>
+<input id="settings-fb-project-id" placeholder="your-app-id" type="text"/>
+</div>
+<div class="form-group">
+<label>Storage Bucket</label>
+<input id="settings-fb-storage-bucket" placeholder="your-app.appspot.com" type="text"/>
+</div>
+<div class="form-group">
+<label>Messaging Sender ID</label>
+<input id="settings-fb-messaging-sender-id" placeholder="1234567890" type="text"/>
+</div>
+<div class="form-group">
+<label>App ID</label>
+<input id="settings-fb-app-id" placeholder="1:1234:web:abcd" type="text"/>
 </div>
 <div style="display:flex;gap:10px;flex-wrap:wrap">
-<button class="btn btn-gold" onclick="requireAdmin(saveSettings)">Save Settings</button>
-<button class="btn btn-outline" onclick="requireAdmin(syncNow)">🔄 Sync Now</button>
-<button class="btn btn-outline" onclick="requireAdmin(fetchFromSheets)">⬇ Pull from Sheets</button>
+<button class="btn btn-gold" onclick="requireAdmin(saveFirebaseConfigFromSettings)">Save Firebase Config</button>
+<button class="btn btn-outline" onclick="requireAdmin(clearFirebaseConfig)">Clear Config</button>
 </div>
 <div id="sync-msg" style="margin-top:10px;font-size:12px;color:var(--muted)"></div>
 </div>
@@ -804,5 +872,10 @@ function escapeHtml(str) {
 }
 </script>
 
-<script src="data.js"></script><script src="app.js"></script></body>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+<script src="data.js"></script>
+</body>
 </html>
