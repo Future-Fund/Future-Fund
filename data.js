@@ -8,7 +8,7 @@ const DEFAULT_FIREBASE_CONFIG = {
   authDomain: "future-fund-savings.firebaseapp.com",
   projectId: "future-fund-savings",
   storageBucket: "future-fund-savings.firebasestorage.app",
-  messagingSenderId: "182032990038",
+  messagingSenderId: "",
   appId: "1:182032990038:web:0d319b305045b0806d60f7"
 };
 
